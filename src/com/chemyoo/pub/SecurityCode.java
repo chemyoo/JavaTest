@@ -1,8 +1,9 @@
 package com.chemyoo.pub;
 /**
- * 对字符串进行加密
+ * 对字符串进行加密,代码进行了小部分混淆
  * @author chemyoo
  * @since 2016-12-19
+ * 
  */
 public class SecurityCode{
   public static String encrypt(String codestr)
