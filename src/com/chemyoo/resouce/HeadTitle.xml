@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE module PUBLIC "-//Puppy Crawl//DTD Check Configuration 1.2//EN"
+  "http://www.puppycrawl.com/dtds/configuration_1_2.dtd">
+  <root>
+  			<title>垂线号</title>
+  			<title>起点距</title>
+  			<title>河底高程</title>
+  			<title>垂线方位</title>
+  			<title>高水</title>
+  			<title>中水</title>
+  			<title>低水</title>
+  </root>
