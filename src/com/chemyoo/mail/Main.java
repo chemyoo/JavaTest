@@ -74,13 +74,14 @@ public class Main {
         
 //        String server = "smtp.163.com";
 //        String username = "chemyoo_15@163.com";
-//        String password = "123456a";
+//        String password = "--123--456--a";
 //        		
 //        Transport transport = session.getTransport();
 //        transport.connect(server, username, password);
 //        transport.sendMessage(message, message.getRecipients(Message.RecipientType.TO));
 //        transport.close();
         Timer time = new Timer();
+        
         GregorianCalendar grego = new GregorianCalendar();
         grego.set(GregorianCalendar.HOUR_OF_DAY, 10);
         grego.set(GregorianCalendar.MINUTE, 0);

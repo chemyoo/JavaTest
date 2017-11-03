@@ -337,6 +337,6 @@ public class ChemyooUtils {
 	
 	private static char geLowercaseLetter()
 	{
-		return (char)((int)Math.floor(Math.random()*26)+65);
+		return (char)((int)Math.floor(Math.random()*26)+97);
 	}
 }
