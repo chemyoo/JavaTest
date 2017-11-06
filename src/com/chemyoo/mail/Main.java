@@ -186,10 +186,10 @@ public class Main {
         //message.setRecipient(MimeMessage.RecipientType.CC, new InternetAddress("724036254@qq.com", "小时光", "UTF-8"));
 
         // 4. Subject: 邮件主题
-        message.setSubject("垃圾网易邮箱", "UTF-8");
+        message.setSubject("网易邮箱", "UTF-8");
 
         // 5. Content: 邮件正文（可以使用html标签）
-        message.setContent("垃圾网易邮箱！", "text/html;charset=UTF-8");
+        message.setContent("网易邮箱！", "text/html;charset=UTF-8");
 
         // 6. 设置发件时间
         message.setSentDate(Calendar.getInstance().getTime());
