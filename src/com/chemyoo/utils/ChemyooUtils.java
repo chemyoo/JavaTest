@@ -3,11 +3,13 @@ package com.chemyoo.utils;
 import java.lang.reflect.Field;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Collection;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -26,6 +28,8 @@ public class ChemyooUtils {
 	private static Object objLock = new Object();
 	
 	private static String MAC_ADDR_STR = LocalMac.Mac.getInstanse().replace("-", "");
+	
+	private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 	
 	private static final long MILLS_OF_DAY = 1000*60*60*24;
 	/**
@@ -148,6 +152,16 @@ public class ChemyooUtils {
 	{
 		long mm=first.getTime()-second.getTime();
 		return mm;
+	}
+	
+	public static Date getNow()
+	{
+		return Calendar.getInstance().getTime();
+	}
+	
+	public static String dateFormat(Date date)
+	{
+		return sdf.format(date);
 	}
 //	/**
 //	 * 关闭计算机
@@ -338,5 +352,38 @@ public class ChemyooUtils {
 	private static char geLowercaseLetter()
 	{
 		return (char)((int)Math.floor(Math.random()*26)+97);
+	}
+	
+public	 static class TimeMonitor{
+		private CountDownLatch countDownLatch = new CountDownLatch(1);
+		public  void timeSatrt(String name)
+		{
+				Thread thread = new Thread(){
+					@Override
+					public void run() {
+						try {
+							Date date = ChemyooUtils.getNow();
+							System.err.println(this.getName()+" 开始时间："+sdf.format(date));
+							long start = date.getTime();
+							countDownLatch.await();
+							date = ChemyooUtils.getNow();
+							System.err.println(this.getName()+" 结束时间："+sdf.format(date));
+							long speed = date.getTime()-start;
+							String ms = ("00"+(speed-(speed/(1000)*1000)));
+							String timespeed = speed/(1000)+"."+ms.substring(ms.length()-3)+"s";
+							System.err.println(this.getName().trim()+" : "+timespeed);
+						} catch (InterruptedException e) {
+							e.printStackTrace();
+						}
+					}
+				};
+				thread.setName("timeMonitor-"+name);
+				thread.start();
+		}
+		
+		public void timeEnd()
+		{
+			countDownLatch.countDown();
+		}
 	}
 }

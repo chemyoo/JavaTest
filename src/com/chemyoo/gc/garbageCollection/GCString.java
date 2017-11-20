@@ -6,12 +6,17 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import com.chemyoo.utils.ChemyooUtils;
+
 public class GCString {
 
 	/**
 	 * @param args
+	 * @throws InterruptedException 
 	 */
 	public static void main(String[] args) {
+		ChemyooUtils.TimeMonitor timeMonitor = new ChemyooUtils.TimeMonitor();
+		timeMonitor.timeSatrt("main");
 		//表A
 		List<Map<String,Object>> A = new ArrayList<Map<String,Object>>();
 		//表B
@@ -46,6 +51,7 @@ public class GCString {
 			}
 		}
 		System.err.println(AB);
+		timeMonitor.timeEnd();
 	}
 	
 	 static void initList(List<Map<String,Object>>list,String listName)

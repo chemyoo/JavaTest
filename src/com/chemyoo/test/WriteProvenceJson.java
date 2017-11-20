@@ -8,6 +8,7 @@ import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Iterator;
@@ -16,6 +17,8 @@ import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
 import org.apache.commons.io.IOUtils;
+
+import com.chemyoo.utils.ChemyooUtils;
 
 public class WriteProvenceJson {
 	
@@ -54,6 +57,7 @@ public class WriteProvenceJson {
 		try {
 			url = new URL(apiUrl);
 				new Thread(){
+					private SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 					@Override
 					public void run() {
 						try {
@@ -63,12 +67,14 @@ public class WriteProvenceJson {
 							//p.doWait();
 							synchronized(object){
 								Date date = Calendar.getInstance().getTime();
-								System.err.println("开始时间："+date);
+								System.err.println("开始时间："+sdf.format(date));
 								long start = date.getTime();
 								object.wait();
 								date = Calendar.getInstance().getTime();
-								System.err.println("结束时间："+date);
-								System.err.println((date.getTime()-start)+"ms");
+								System.err.println("结束时间："+sdf.format(date));
+								long speed = date.getTime()-start;
+								System.err.println(speed+"ms");
+								System.out.println(speed/(1000)+"."+(speed-(speed/(1000)*1000))+"s");
 							}
 						} catch (InterruptedException e) {
 							e.printStackTrace();
@@ -93,9 +99,9 @@ public class WriteProvenceJson {
 	 			while(it.hasNext())
 	 			{
 	 				provence = it.next();
-	 				name = provence.getString("name");
+	 				name = provence.getString("name").trim();
 	 				System.err.println(name);
-	 				if(!"市辖区".equals(name.trim()) && !"市辖县".equals(name.trim()))
+	 				if(!"市辖区".equals(name) && !"市辖县".equals(name))
 					{
 	 					if(code.equals(provence.getString("parent_code")))
 	 					{

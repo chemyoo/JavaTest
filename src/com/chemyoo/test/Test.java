@@ -22,6 +22,7 @@ import org.apache.log4j.Logger;
 
 import com.chemyoo.pub.SecurityCode;
 import com.chemyoo.utils.ChemyooUtils;
+import com.chemyoo.utils.ChemyooUtils.TimeMonitor;
 import com.chemyoo.utils.LocalMac;
 
 
@@ -144,6 +145,12 @@ public class Test
 		String aaa="use                 [khsl] "+separator+"GO"+separator+"fsajdkfljlk;a";
 		aaa = aaa.replaceAll("^(USE|use)[ ]++\\[.*\\]", "");
 		System.err.println(aaa);
+		TimeMonitor timeMon1 = new ChemyooUtils.TimeMonitor();
+		timeMon1.timeSatrt("A");
+		TimeMonitor timeMon2 = new ChemyooUtils.TimeMonitor();
+		timeMon2.timeSatrt("B");
+			timeMon1.timeEnd();
+			timeMon2.timeEnd();
 	}
 	private static void sortArray(long array[])
 	{
