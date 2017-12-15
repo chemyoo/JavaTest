@@ -354,6 +354,11 @@ public class ChemyooUtils {
 		return (char)((int)Math.floor(Math.random()*26)+97);
 	}
 	
+	public staic String getLineSeparator()
+	{
+		return System.getProperty("line.separator");
+	}
+	
 public	 static class TimeMonitor{
 		private CountDownLatch countDownLatch = new CountDownLatch(1);
 		public  void timeSatrt(String name)
