@@ -354,7 +354,7 @@ public class ChemyooUtils {
 		return (char)((int)Math.floor(Math.random()*26)+97);
 	}
 	
-	public staic String getLineSeparator()
+	public static String getLineSeparator()
 	{
 		return System.getProperty("line.separator");
 	}
