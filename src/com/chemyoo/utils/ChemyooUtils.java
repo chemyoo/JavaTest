@@ -359,6 +359,11 @@ public class ChemyooUtils {
 		return System.getProperty("line.separator");
 	}
 	
+	public static String getPathSeparator()
+	{
+        	return System.getProperty("path.separator");
+    	}
+	
 public	 static class TimeMonitor{
 		private CountDownLatch countDownLatch = new CountDownLatch(1);
 		public  void timeSatrt(String name)
