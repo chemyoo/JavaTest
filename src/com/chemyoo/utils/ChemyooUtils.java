@@ -363,6 +363,10 @@ public class ChemyooUtils {
 	{
         	return System.getProperty("path.separator");
     	}
+	public static String getFileSeparator()
+	{
+        	return System.getProperty("file.separator");
+    	}
 	
 public	 static class TimeMonitor{
 		private CountDownLatch countDownLatch = new CountDownLatch(1);
