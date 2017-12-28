@@ -37,6 +37,8 @@ public class ChemyooUtils {
 	 * @param collection
 	 * @return true or false
 	 */
+
+	private ChemyooUtils(){}
 	public static <T> boolean isEmpty(Collection<T> collection)
 	{
 		return (collection == null || collection.size() == 0);
